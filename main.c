@@ -211,10 +211,116 @@ void		debug_write(void)
  	printf("errno : %d\n", errno);	
 }
 
+/*void		debug_strcmp(void)
+{
+	printf("-------------------ft_strcmp-------------------\n");
+	printf("ft_strcmp : \n");
+	printf("%d\n", ft_strcmp("", "coucouu"));
+	printf("strcmp : \n");
+	printf("%d\n", strcmp("", "coucouu"));
+	printf("----------\n");
+	printf("ft_strcmp : \n");
+	printf("%d\n", ft_strcmp("lol", "coucouu"));
+	printf("strcmp : \n");
+	printf("%d\n", strcmp("lol", "coucouu"));
+	printf("----------\n");
+	printf("ft_strcmp : \n");
+	printf("%d\n", ft_strcmp("hohohoho", "coucouu"));
+	printf("strcmp : \n");
+	printf("%d\n", strcmp("hohohoho", "coucouu"));
+	printf("----------\n");
+	printf("ft_strcmp : \n");
+	printf("%d\n", ft_strcmp("", "bonjour"));
+	printf("strcmp : \n");
+	printf("%d\n", strcmp("", "bonjour"));
+	printf("----------\n");
+	printf("ft_strcmp : \n");
+	printf("%d\n", ft_strcmp("bonjour", "bonjour"));
+	printf("strcmp : \n");
+	printf("%d\n", strcmp("bonjour", "bonjour"));	
+}*/
+
+void		debug_read(void)
+{
+    printf("-------------------ft_read-------------------\n");
+    char		buff[100];
+    int         fd;
+    ssize_t     ret;
+
+	printf("ft_read : \n");   
+    	fd = open("test.txt", O_RDONLY);
+    	ret = ft_read(fd, buff, 10);
+    	buff[ret] = '\0';
+	printf("buff = %sret = %zd\n", buff, ret);
+	close(fd);
+
+	printf("read : \n");
+	fd = open("test.txt", O_RDONLY);
+	ret = read(fd, buff, 10);
+	buff[ret] = '\0';
+	printf("buff = %sret = %zd\n", buff, ret);
+    	close(fd);
+	printf("----------\n");
+	printf("ft_read : \n");
+    	fd = open("lol.txt", O_RDONLY);
+    	ret = ft_read(fd, buff, 10);
+ 	printf("errno : %d\n", errno);
+    	buff[ret] = '\0';
+	printf("buff = %sret = %zd\n", buff, ret);
+	close(fd);
+
+	errno = 0;
+	printf("read : \n");
+	fd = open("lol.txt", O_RDONLY);
+	ret = read(fd, buff, 10);
+ 	printf("errno : %d\n", errno);
+	buff[ret] = '\0';
+	printf("buff = %sret = %zd\n", buff, ret);
+    	close(fd);
+	printf("----------\n");
+	char	buf_read[2048];
+	int tmp[2];
+
+	printf("ft_read : \n");
+    	ret = ft_read(-1, buf_read, 2);
+ 	printf("errno : %d\n", errno);
+	printf("buf: %s, ret = %zd\n", buf_read, ret);
+	close(fd);
+	errno = 0;
+	printf("read : \n");
+	ret = read(-1, buf_read, 2);
+ 	printf("errno : %d\n", errno);
+	printf("buf: %s, ret = %zd\n", buf_read, ret);
+	printf("----------\n");
+	printf("ft_read : \n");
+    ret = ft_read(tmp[0], NULL, 2);
+ 	printf("errno : %d || %s || \n", errno, strerror(errno));
+	printf("buf: %s, ret = %zd\n", buf_read, ret);
+	close(fd);
+	errno = 0;
+	printf("read : \n");
+	ret = read(tmp[0], NULL, 2);
+ 	printf("errno : %d\n", errno);
+	printf("buf: %s, ret = %zd\n", buf_read, ret);
+	printf("----------\n");
+	printf("ft_read : \n");
+    ret = ft_read(OPEN_MAX + 1, buf_read, 2);
+ 	printf("errno : %d\n", errno);
+	printf("buf: %s, ret = %zd\n", buf_read, ret);
+	close(fd);
+	errno = 0;
+	printf("read : \n");
+	ret = read(OPEN_MAX + 1, buf_read, 2);
+ 	printf("errno : %d\n", errno);
+	printf("buf: %s, ret = %zd\n", buf_read, ret);
+}
+
 int     main()
 {
-//	debug_strdup();
-//	debug_strlen();
+	/*debug_strdup();
+	debug_strlen();
 	debug_write();
+	debug_strcmp();*/
+	debug_read();
 	return (EXIT_SUCCESS);
 }
