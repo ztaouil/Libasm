@@ -1,18 +1,17 @@
 segment .text
         global  _ft_write
-        extern  __error
+        extern  ___error
 
 _ft_write:
         mov		rax, 0x2000004
 		syscall
-		jc		__error
+		jc		_error
+		ret
 
 _error:
-		mov		r15, rax
-		call	__error
+		push		 rax
+		call	___error
+		pop		r15 
 		mov		[rax], r15
-		jmp		_done
-
-_done:
 		mov		rax, -1
 		ret
