@@ -19,6 +19,7 @@ SRCS =	ft_strlen.s\
 		ft_strcpy.s\
 		ft_strdup.s\
 		ft_read.s\
+		ft_strcmp.s\
 		
 OBJS = $(SRCS:.s=.o)
 

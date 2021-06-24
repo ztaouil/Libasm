@@ -211,7 +211,7 @@ void		debug_write(void)
  	printf("errno : %d\n", errno);	
 }
 
-/*void		debug_strcmp(void)
+void		debug_strcmp(void)
 {
 	printf("-------------------ft_strcmp-------------------\n");
 	printf("ft_strcmp : \n");
@@ -238,7 +238,7 @@ void		debug_write(void)
 	printf("%d\n", ft_strcmp("bonjour", "bonjour"));
 	printf("strcmp : \n");
 	printf("%d\n", strcmp("bonjour", "bonjour"));	
-}*/
+}
 
 void		debug_read(void)
 {
@@ -320,7 +320,8 @@ int     main()
 	/*debug_strdup();
 	debug_strlen();
 	debug_write();
-	debug_strcmp();*/
-	debug_read();
+	;*/
+	//debug_read();
+	debug_strcmp();
 	return (EXIT_SUCCESS);
 }
