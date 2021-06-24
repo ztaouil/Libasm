@@ -6,34 +6,215 @@
 /*   By: ztaouil <ztaouil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 15:29:30 by ztaouil           #+#    #+#             */
-/*   Updated: 2021/06/24 06:53:54 by ztaouil          ###   ########.fr       */
+/*   Updated: 2021/06/24 08:59:20 by ztaouil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <sys/errno.h>
+#include "libasm.h"
 
-extern size_t      ft_strlen(const char *s);
-extern ssize_t     ft_write(int fd, const void *buf, size_t nb);
-
-int     main(void)
+void		debug_strdup(void)
 {
-    int len;
-    int fd, fd2;
-    char src[50] = "WHAT'S UP BOY";
+	printf("-------------------ft_strdup-------------------\n");
+    printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup("test12345"));
+    printf("strdup : \n");
+	printf("%s\n", strdup("test12345"));
+	printf("----------\n");
+    printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup("a"));
+    printf("strdup : \n");
+	printf("%s\n", strdup("a"));
+	printf("----------\n");
+    printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup("test"));
+    printf("strdup : \n");
+	printf("%s\n", strdup("test"));
+	printf("----------\n");
+	printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup(""));
+    printf("strdup : \n");
+	printf("%s\n", strdup(""));
+	printf("----------\n");
+	printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup("\n"));
+    printf("strdup : \n");
+	printf("%s\n", strdup("\n"));
+	printf("----------\n");
+	printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup(""));
+    printf("strdup : \n");
+	printf("%s\n", strdup(""));
+	printf("----------\n");
+	printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup("abc"));
+    printf("strdup : \n");
+	printf("%s\n", strdup("abc"));
+	printf("----------\n");
+	printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup("asl;fjl;asdjfjkasdl;fjadjsf"));
+    printf("strdup : \n");
+	printf("%s\n", strdup("asl;fjl;asdjfjkasdl;fjadjsf"));
+	printf("----------\n");
+	printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup("yope\0la"));
+    printf("strdup : \n");
+	printf("%s\n", strdup("yope\0la"));
+	printf("----------\n");
+	printf("ft_strdup : \n");
+	printf("%s\n", ft_strdup("Lorem ipsum dolor sit amet, consectetur adipiscingelit. Sed in malesuada purus. Etiam a scelerisque massa. Ut non euismod elit. Aliquambibendum dolor mi, id fringilla tellus pulvinar eu. Fusce vel fermentum sem. Crasvolutpat, eros eget rhoncus rhoncus, diam augue egestas dolor, vitae rutrum nisifelis sed purus. Mauris magna ex, mollis non suscipit eu, lacinia ac turpis. Phasellusac tortor et lectus fermentum lobortis eu at mauris. Vestibulum sit amet posueretortor, sit amet consequat amet."));
+    printf("strdup : \n");
+	printf("%s\n", strdup("Lorem ipsum dolor sit amet, consectetur adipiscingelit. Sed in malesuada purus. Etiam a scelerisque massa. Ut non euismod elit. Aliquambibendum dolor mi, id fringilla tellus pulvinar eu. Fusce vel fermentum sem. Crasvolutpat, eros eget rhoncus rhoncus, diam augue egestas dolor, vitae rutrum nisifelis sed purus. Mauris magna ex, mollis non suscipit eu, lacinia ac turpis. Phasellusac tortor et lectus fermentum lobortis eu at mauris. Vestibulum sit amet posueretortor, sit amet consequat amet."));
+}
 
-    len = ft_strlen(src);
-    errno = 0;
-    int     ret = ft_write(9, src, len);
-    printf("\n1-|%s|| ret |%d|\n", strerror(errno),ret);
-    errno = 0;
-    ret = ft_write(1, src, len);
-    printf("\n2-|%s|| ret |%d|\n", strerror(errno),ret);
+void		debug_strlen(void)
+{
+	printf("-------------------ft_strlen-------------------\n");
+	printf("ft_strlen : \n");
+	printf("%zd\n", ft_strlen("test12345"));
+	printf("strlen : \n");
+	printf("%zd\n", strlen("test12345"));
+	printf("----------\n");
+	printf("ft_strlen : \n");
+	printf("%zd\n", ft_strlen("1"));
+	printf("strlen : \n");
+	printf("%zd\n", strlen("1"));
+	printf("----------\n");
+	printf("ft_strlen : \n");
+	printf("%zd\n", ft_strlen("test"));
+	printf("strlen : \n");
+	printf("%zd\n", strlen("test"));
+	printf("----------\n");
+	printf("ft_strlen : \n");
+	printf("%zd\n", ft_strlen(""));
+	printf("strlen : \n");
+	printf("%zd\n", strlen(""));
+	printf("----------\n");
+	printf("ft_strlen : \n");
+	printf("%zd\n", ft_strlen("\n"));
+	printf("strlen : \n");
+	printf("%zd\n", strlen("\n"));
+	printf("----------\n");
+	printf("ft_strlen : \n");
+	printf("%zd\n", ft_strlen("zzzzzzzzzzzzzzzzzzzzzzzz hey"));
+	printf("strlen : \n");
+	printf("%zd\n", strlen("zzzzzzzzzzzzzzzzzzzzzzzz hey"));	
+}
 
-    return (0);
+void		debug_strcpy(void)
+{
+	char	str1[] = "COUCOU";
+	char	str2[] = "HEY";
+	char	str3[] = "weshhhh";
+	char	str4[] = " ";
+	char	str5[] = "lol";
+	char	str6[] = "hih";
+	char	str7[] = "mdr";
+	printf("-------------------ft_strcpy-------------------\n");
+	printf("ft_strcpy : \n");
+	printf("%s\n", ft_strcpy(str1, str2));
+	printf("strcpy : \n");
+	printf("%s\n", strcpy(str1, str2));
+	printf("----------\n");
+	printf("ft_strcpy : \n");
+	printf("%s\n", ft_strcpy(str3, str4));
+	printf("strcpy : \n");
+	printf("%s\n", strcpy(str3, str4));
+	printf("----------\n");
+	printf("ft_strcpy : \n");
+	printf("%s\n", ft_strcpy(str5, str6));
+	printf("strcpy : \n");
+	printf("%s\n", strcpy(str5, str6));
+	printf("----------\n");
+	printf("ft_strcpy : \n");
+	printf("%s\n", ft_strcpy(str6, str7));
+	printf("strcpy : \n");
+	printf("%s\n", strcpy(str6, str7));
+	printf("----------\n");
+	printf("ft_strcpy : \n");
+	printf("%s\n", ft_strcpy(str7, str4));
+	printf("strcpy : \n");
+	printf("%s\n", strcpy(str7, str4));
+}
+
+#define OPEN_MAX FOPEN_MAX
+
+void		debug_write(void)
+{
+	int tmp[2];
+	printf("-------------------ft_write-------------------\n");
+ 	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(0, "coucou", 6));
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(0, "coucou", 6));
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(0, "test", 2));
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(0, "test", 2));
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(0, "test", 1));
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(0, "test", 1));
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(1, "yeslolol", 9));
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(1, "yeslolol", 9));
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(300, "yeslolol", 9));
+ 	printf("errno : %d\n", errno);
+	printf("write : \n");
+	errno = 0;
+	printf("\nreturn = %zd\n", write(300, "yeslolol", 9));
+ 	printf("errno : %d\n", errno);
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(1, NULL, 9));
+ 	printf("errno : %d\n", errno);
+	errno = 0;
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(1, NULL, 9));
+ 	printf("errno : %d\n", errno);
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(-1, "test", 5));
+ 	printf("errno : %d\n", errno);
+	errno = 0;
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(-1, "test", 5));
+ 	printf("errno : %d\n", errno);
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(tmp[1], NULL, 5));
+ 	printf("errno : %d\n", errno);
+	errno = 0;
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(tmp[1], NULL, 5));
+ 	printf("errno : %d\n", errno);
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(-1, "tt", 2));
+ 	printf("errno : %d\n", errno);
+	errno = 0;
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(-1, "tt", 2));
+ 	printf("errno : %d\n", errno);
+	printf("----------\n");
+	printf("ft_write : \n");
+	printf("\nreturn = %zd\n", ft_write(OPEN_MAX + 1, "tt", 2));
+ 	printf("errno : %d\n", errno);
+	errno = 0;
+ 	printf("write : \n");
+	printf("\nreturn = %zd\n", write(OPEN_MAX + 1, "tt", 2));
+ 	printf("errno : %d\n", errno);	
+}
+
+int     main()
+{
+//	debug_strdup();
+//	debug_strlen();
+	debug_write();
+	return (EXIT_SUCCESS);
 }

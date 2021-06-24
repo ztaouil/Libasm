@@ -1,28 +1,30 @@
 ; **************************************************************************** #
 ;                                                                              #
 ;                                                         :::      ::::::::    #
-;    ft_write.s                                         :+:      :+:    :+:    #
+;    ft_strcpy.s                                        :+:      :+:    :+:    #
 ;                                                     +:+ +:+         +:+      #
 ;    By: ztaouil <ztaouil@student.42.fr>            +#+  +:+       +#+         #
 ;                                                 +#+#+#+#+#+   +#+            #
-;    Created: 2021/06/24 07:31:02 by ztaouil           #+#    #+#              #
-;    Updated: 2021/06/24 07:31:03 by ztaouil          ###   ########.fr        #
+;    Created: 2021/06/24 07:30:42 by ztaouil           #+#    #+#              #
+;    Updated: 2021/06/24 07:45:22 by ztaouil          ###   ########.fr        #
 ;                                                                              #
 ; **************************************************************************** #
 
-global  _ft_write
-extern  ___error
+global _ft_strcpy
 
-_ft_write:
-        mov		rax, 0x2000004
-		syscall
-		jc		_error
-		ret
+_ft_strcpy:
+        xor     rcx, rcx
 
-_error:
-		push		 rax
-		call	___error
-		pop		r15 
-		mov		[rax], r15
-		mov		rax, -1
+loop:
+        cmp     byte [rsi + rcx], 0
+        jz      return
+		mov		dl, [rsi + rcx]
+		mov 	[rdi + rcx], dl
+		inc		rcx
+		jmp		loop
+
+return:
+		mov		byte [rdi + rcx], 0 
+		mov		rax, rdi
 		ret
+        
